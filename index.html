@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cricket Dashboard with Enhanced Detail View</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>Cricket Match Dashboard</h1>
+      <p class="subtitle">Live scores, match details and player statistics</p>
+      <div class="header-line"></div>
+    </header>
+
+    <main>
+      <div id="matchList" class="match-grid">
+        <!-- Match cards will be inserted here -->
+      </div>
+
+      <div id="matchDetail" class="match-detail hidden">
+        <button id="backButton" class="back-button">
+          ← Back to matches
+        </button>
+        
+        <div class="match-header">
+          <h2 id="matchTeams"></h2>
+          <div class="match-meta">
+            <span id="matchDate"></span>
+            <span id="matchVenue"></span>
+          </div>
+        </div>
+
+        <div id="matchResult" class="match-result"></div>
+
+        <div class="stats-grid">
+          <div class="stats-card top-performers">
+            <h3>Top Performers</h3>
+            <div id="topPerformers"></div>
+          </div>
+          
+          <div class="stats-card match-summary">
+            <h3>Match Summary</h3>
+            <div id="matchSummary"></div>
+          </div>
+        </div>
+
+        <div class="teams-section">
+          <div id="teamA" class="team-section">
+            <h3></h3>
+            <div class="player-stats"></div>
+          </div>
+          
+          <div id="teamB" class="team-section">
+            <h3></h3>
+            <div class="player-stats"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
