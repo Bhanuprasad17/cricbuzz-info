@@ -1,175 +1,67 @@
-const matchesData = [
-  {
-    id: 1,
-    teams: "India vs Australia",
-    date: "2025-05-16",
-    venue: "Wankhede Stadium",
-    result: "India won by 6 wickets",
-    players: [
-      { name: "Rohit Sharma", runs: 45, wickets: 0 },
-      { name: "Shubman Gill", runs: 38, wickets: 0 },
-      { name: "Virat Kohli", runs: 85, wickets: 0 },
-      { name: "KL Rahul", runs: 25, wickets: 0 },
-      { name: "Hardik Pandya", runs: 30, wickets: 1 },
-      { name: "Ravindra Jadeja", runs: 20, wickets: 2 },
-      { name: "Jasprit Bumrah", runs: 5, wickets: 3 },
-      { name: "Mohammed Shami", runs: 8, wickets: 2 },
-      { name: "Kuldeep Yadav", runs: 3, wickets: 1 },
-      { name: "Suryakumar Yadav", runs: 40, wickets: 0 },
-      { name: "Ishan Kishan", runs: 10, wickets: 0 },
-      { name: "David Warner", runs: 55, wickets: 0 },
-      { name: "Travis Head", runs: 40, wickets: 0 },
-      { name: "Steve Smith", runs: 67, wickets: 1 },
-      { name: "Marnus Labuschagne", runs: 20, wickets: 0 },
-      { name: "Glenn Maxwell", runs: 35, wickets: 2 },
-      { name: "Marcus Stoinis", runs: 22, wickets: 1 },
-      { name: "Pat Cummins", runs: 15, wickets: 2 },
-      { name: "Mitchell Starc", runs: 5, wickets: 3 },
-      { name: "Adam Zampa", runs: 2, wickets: 1 },
-      { name: "Josh Hazlewood", runs: 1, wickets: 2 },
-      { name: "Alex Carey", runs: 28, wickets: 0 }
-    ]
-  },
-  {
-    id: 2,
-    teams: "England vs South Africa",
-    date: "2025-05-15",
-    venue: "Lord's Cricket Ground",
-    result: "Match drawn",
-    players: [
-      { name: "Joe Root", runs: 120, wickets: 0 },
-      { name: "Ben Stokes", runs: 65, wickets: 2 },
-      { name: "Jonny Bairstow", runs: 48, wickets: 0 },
-      { name: "Jos Buttler", runs: 36, wickets: 0 },
-      { name: "Moeen Ali", runs: 25, wickets: 1 },
-      { name: "Chris Woakes", runs: 18, wickets: 2 },
-      { name: "Stuart Broad", runs: 10, wickets: 3 },
-      { name: "James Anderson", runs: 5, wickets: 2 },
-      { name: "Ollie Pope", runs: 42, wickets: 0 },
-      { name: "Zac Crawley", runs: 22, wickets: 0 },
-      { name: "Jack Leach", runs: 12, wickets: 1 },
-      { name: "Dean Elgar", runs: 80, wickets: 0 },
-      { name: "Temba Bavuma", runs: 50, wickets: 0 },
-      { name: "Aiden Markram", runs: 66, wickets: 0 },
-      { name: "Rassie van der Dussen", runs: 42, wickets: 0 },
-      { name: "Quinton de Kock", runs: 60, wickets: 0 },
-      { name: "Kagiso Rabada", runs: 20, wickets: 4 },
-      { name: "Anrich Nortje", runs: 5, wickets: 2 },
-      { name: "Keshav Maharaj", runs: 15, wickets: 1 },
-      { name: "Marco Jansen", runs: 30, wickets: 2 },
-      { name: "Heinrich Klaasen", runs: 25, wickets: 0 },
-      { name: "Lungi Ngidi", runs: 8, wickets: 1 }
-    ]
-  },
-  {
-    id: 3,
-    teams: "New Zealand vs Pakistan",
-    date: "2025-05-14",
-    venue: "Eden Park",
-    result: "New Zealand won by 4 wickets",
-    players: [
-      { name: "Kane Williamson", runs: 95, wickets: 0 },
-      { name: "Martin Guptill", runs: 75, wickets: 0 },
-      { name: "Devon Conway", runs: 60, wickets: 0 },
-      { name: "Tom Latham", runs: 30, wickets: 0 },
-      { name: "Glenn Phillips", runs: 28, wickets: 1 },
-      { name: "Daryl Mitchell", runs: 40, wickets: 1 },
-      { name: "Tim Southee", runs: 12, wickets: 2 },
-      { name: "Trent Boult", runs: 8, wickets: 3 },
-      { name: "Ish Sodhi", runs: 10, wickets: 2 },
-      { name: "Mitchell Santner", runs: 18, wickets: 2 },
-      { name: "Mark Chapman", runs: 15, wickets: 0 },
-      { name: "Babar Azam", runs: 70, wickets: 0 },
-      { name: "Mohammad Rizwan", runs: 60, wickets: 0 },
-      { name: "Fakhar Zaman", runs: 45, wickets: 0 },
-      { name: "Imam-ul-Haq", runs: 35, wickets: 0 },
-      { name: "Shaheen Afridi", runs: 10, wickets: 3 },
-      { name: "Haris Rauf", runs: 5, wickets: 2 },
-      { name: "Shadab Khan", runs: 20, wickets: 2 },
-      { name: "Mohammad Nawaz", runs: 22, wickets: 1 },
-      { name: "Naseem Shah", runs: 3, wickets: 1 },
-      { name: "Iftikhar Ahmed", runs: 25, wickets: 0 },
-      { name: "Salman Agha", runs: 15, wickets: 0 }
-    ]
-  },
-   {
-    id: 4,
-    teams: "West Indies vs Bangladesh",
-    date: "2025-05-13",
-    venue: "Kensington Oval",
-    result: "West Indies won by 5 wickets",
-    players: [
-      { name: "Shai Hope", runs: 55, wickets: 0 },
-      { name: "Jason Holder", runs: 40, wickets: 2 },
-      { name: "Nicholas Pooran", runs: 60, wickets: 0 },
-      { name: "Kieron Pollard", runs: 25, wickets: 1 },
-      { name: "Shimron Hetmyer", runs: 35, wickets: 0 },
-      { name: "Rovman Powell", runs: 20, wickets: 1 },
-      { name: "Alzarri Joseph", runs: 5, wickets: 3 },
-      { name: "Oshane Thomas", runs: 3, wickets: 2 },
-      { name: "Andre Russell", runs: 10, wickets: 1 },
-      { name: "Sunil Narine", runs: 8, wickets: 2 },
-      { name: "Jason Mohammed", runs: 15, wickets: 0 },
-      { name: "Shakib Al Hasan", runs: 70, wickets: 1 },
-      { name: "Tamim Iqbal", runs: 45, wickets: 0 },
-      { name: "Mushfiqur Rahim", runs: 30, wickets: 0 },
-      { name: "Mahmudullah", runs: 22, wickets: 1 },
-      { name: "Mustafizur Rahman", runs: 5, wickets: 3 },
-      { name: "Taskin Ahmed", runs: 2, wickets: 2 },
-      { name: "Mehidy Hasan", runs: 12, wickets: 1 },
-      { name: "Soumya Sarkar", runs: 18, wickets: 0 },
-      { name: "Liton Das", runs: 25, wickets: 0 },
-      { name: "Najmul Hossain", runs: 10, wickets: 0 },
-      { name: "Rubel Hossain", runs: 3, wickets: 2 }
-    ]
-  },
-  {
-    id: 5,
-    teams: "Sri Lanka vs Zimbabwe",
-    date: "2025-05-12",
-    venue: "R. Premadasa Stadium",
-    result: "Sri Lanka won by 8 wickets",
-    players: [
-      { name: "Kusal Perera", runs: 80, wickets: 0 },
-      { name: "Dasun Shanaka", runs: 40, wickets: 2 },
-      { name: "Dinesh Chandimal", runs: 55, wickets: 0 },
-      { name: "Angelo Mathews", runs: 25, wickets: 1 },
-      { name: "Pathum Nissanka", runs: 30, wickets: 0 },
-      { name: "Wanindu Hasaranga", runs: 18, wickets: 3 },
-      { name: "Lakshan Sandakan", runs: 10, wickets: 2 },
-      { name: "Dushmantha Chameera", runs: 5, wickets: 2 },
-      { name: "Chamika Karunaratne", runs: 15, wickets: 1 },
-      { name: "Niroshan Dickwella", runs: 20, wickets: 0 },
-      { name: "Charith Asalanka", runs: 28, wickets: 0 },
-      { name: "Sean Williams", runs: 65, wickets: 0 },
-      { name: "Craig Ervine", runs: 40, wickets: 0 },
-      { name: "Regis Chakabva", runs: 30, wickets: 0 },
-      { name: "Brendan Taylor", runs: 22, wickets: 0 },
-      { name: "Kyle Jarvis", runs: 5, wickets: 3 },
-      { name: "Blessing Muzarabani", runs: 3, wickets: 2 },
-      { name: "Richard Ngarava", runs: 8, wickets: 1 },
-      { name: "Wessly Madhevere", runs: 12, wickets: 0 },
-      { name: "Tendai Chatara", runs: 7, wickets: 1 },
-      { name: "Peter Moor", runs: 10, wickets: 0 },
-      { name: "Ryan Burl", runs: 15, wickets: 0 }
-    ]
-  }
-];
-
-
 document.addEventListener('DOMContentLoaded', () => {
+  // Navigation
+  const navButtons = document.querySelectorAll('.nav-button');
+  const sections = document.querySelectorAll('.section');
+  
+  navButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const targetSection = button.dataset.section;
+      
+      // Update active states
+      navButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+      
+      // Show/hide sections
+      sections.forEach(section => {
+        if (section.id === targetSection) {
+          section.classList.remove('hidden');
+        } else {
+          section.classList.add('hidden');
+        }
+      });
+      
+      // Reset match detail view when switching sections
+      if (targetSection !== 'matches') {
+        document.getElementById('matchDetail').classList.add('hidden');
+        document.getElementById('matchList').style.display = 'grid';
+      }
+
+      // Reset series detail view when switching sections
+      if (targetSection !== 'series') {
+        document.getElementById('seriesDetail').classList.add('hidden');
+        document.getElementById('seriesList').style.display = 'grid';
+      }
+    });
+  });
+
+  // Auth tabs
+  const authTabs = document.querySelectorAll('.auth-tab');
+  const loginForm = document.getElementById('loginForm');
+  const registerForm = document.getElementById('registerForm');
+  
+  authTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const targetTab = tab.dataset.tab;
+      
+      // Update active states
+      authTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      
+      // Show/hide forms
+      if (targetTab === 'login') {
+        loginForm.classList.remove('hidden');
+        registerForm.classList.add('hidden');
+      } else {
+        loginForm.classList.add('hidden');
+        registerForm.classList.remove('hidden');
+      }
+    });
+  });
+
+  // Match functionality
   const matchList = document.getElementById('matchList');
   const matchDetail = document.getElementById('matchDetail');
   const backButton = document.getElementById('backButton');
-
-  const teamColors = {
-    'India': '#0078BC',
-    'Australia': '#FFD700',
-    'England': '#15377F',
-    'South Africa': '#007A33',
-    'New Zealand': '#000000',
-    'Pakistan': '#006633'
-  };
 
   function formatDate(dateString) {
     const options = { year: 'numeric', month: 'short', day: 'numeric' };
@@ -177,6 +69,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function getTeamColors(teamA, teamB) {
+    const teamColors = {
+      'India': '#0078BC',
+      'Australia': '#FFD700',
+      'England': '#15377F',
+      'South Africa': '#007A33',
+      'New Zealand': '#000000',
+      'Pakistan': '#006633',
+      'West Indies': '#800000',
+      'Sri Lanka': '#003F87',
+      'Bangladesh': '#006A4E',
+      'Zimbabwe': '#CD0000'
+    };
+
     return {
       colorA: teamColors[teamA] || '#3B82F6',
       colorB: teamColors[teamB] || '#10B981'
@@ -214,6 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     matchList.style.display = 'none';
     matchDetail.classList.remove('hidden');
+    matchDetail.classList.add('fade-in');
     
     document.getElementById('matchTeams').textContent = match.teams;
     document.getElementById('matchDate').textContent = formatDate(match.date);
@@ -280,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   <td>${player.wickets}</td>
                   <td>
                     <div class="performance-bar">
-                      <div class="performance-fill" 
+                      <div class="performance-fill"
                            style="width: ${performancePercentage}%; background-color: ${teamColor}">
                       </div>
                     </div>
@@ -310,5 +216,206 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize match cards
   matchesData.forEach(match => {
     matchList.appendChild(createMatchCard(match));
+  });
+
+  // Series functionality
+  const seriesList = document.getElementById('seriesList');
+  const seriesDetail = document.getElementById('seriesDetail');
+  const seriesBackButton = document.getElementById('seriesBackButton');
+
+  function getSeriesFormatClass(format) {
+    if (format.includes('Test')) return 'format-test';
+    if (format.includes('ODI')) return 'format-odi';
+    if (format.includes('T20')) return 'format-t20';
+    return 'format-test'; // Default
+  }
+
+  function getSeriesBackgroundGradient(format) {
+    if (format.includes('Test')) {
+      return 'linear-gradient(to right, #1e40af, #3b82f6)';
+    }
+    if (format.includes('ODI')) {
+      return 'linear-gradient(to right, #047857, #10b981)';
+    }
+    if (format.includes('T20')) {
+      return 'linear-gradient(to right, #b91c1c, #ef4444)';
+    }
+    return 'linear-gradient(to right, var(--primary-color), #2e7d32)'; // Default
+  }
+
+  function createSeriesCard(series) {
+    const card = document.createElement('div');
+    card.className = 'series-card';
+    
+    const gradient = getSeriesBackgroundGradient(series.format);
+    
+    card.innerHTML = `
+      <div class="series-header" style="background: ${gradient}">
+        <h3>${series.name}</h3>
+        <p>${series.dateRange}</p>
+      </div>
+      <div class="series-content">
+        <div class="series-meta">
+          <span class="series-tag">${series.format}</span>
+          <span>${series.numberOfMatches} Matches</span>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Teams</p>
+            <p style="font-weight: 500;">${series.teams.length > 30 ? series.teams.substring(0, 30) + '...' : series.teams}</p>
+          </div>
+          <div style="text-align: right;">
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Host</p>
+            <p style="font-weight: 500;">${series.host}</p>
+          </div>
+        </div>
+      </div>
+    `;
+    
+    card.addEventListener('click', () => showSeriesDetail(series));
+    return card;
+  }
+
+  function showSeriesDetail(series) {
+    seriesList.style.display = 'none';
+    seriesDetail.classList.remove('hidden');
+    seriesDetail.classList.add('fade-in');
+    
+    document.getElementById('seriesName').textContent = series.name;
+    document.getElementById('seriesDateRange').textContent = series.dateRange;
+    document.getElementById('seriesHost').textContent = `Host: ${series.host}`;
+    
+    const formatElement = document.getElementById('seriesFormat');
+    formatElement.textContent = series.format;
+    formatElement.className = `series-format-tag ${getSeriesFormatClass(series.format)}`;
+
+    // Render series details
+    const detailsHTML = `
+      <div class="detail-item">
+        <span class="label">Format</span>
+        <span class="value">${series.format}</span>
+      </div>
+      <div class="detail-item">
+        <span class="label">Matches</span>
+        <span class="value">${series.numberOfMatches}</span>
+      </div>
+      <div class="detail-item">
+        <span class="label">Status</span>
+        <span class="value">${series.status || 'Upcoming'}</span>
+      </div>
+      <div class="detail-item">
+        <span class="label">Description</span>
+        <span class="value">${series.description || 'No description available'}</span>
+      </div>
+    `;
+    
+    document.getElementById('seriesDetails').innerHTML = detailsHTML;
+
+    // Render teams
+    let teamsHTML = '';
+    if (series.teams.includes(',')) {
+      // Multiple teams
+      const teamsList = series.teams.split(',').map(team => team.trim());
+      teamsHTML = teamsList.map(team => `
+        <div class="team-item">
+          <span class="value">${team}</span>
+        </div>
+      `).join('');
+    } else {
+      // Just two teams or a general description
+      teamsHTML = `
+        <div class="team-item">
+          <span class="value">${series.teams}</span>
+        </div>
+      `;
+    }
+    
+    document.getElementById('seriesTeams').innerHTML = teamsHTML;
+
+    // Render schedule
+    if (series.matches && series.matches.length > 0) {
+      const scheduleHTML = series.matches.map(match => {
+        const dateStr = formatDate(match.date);
+        let resultClass = '';
+        
+        if (match.result && !match.result.includes('To be played')) {
+          resultClass = match.result.includes('won') ? 'result-win' : 'result-draw';
+        }
+        
+        return `
+          <div class="schedule-item">
+            <div class="schedule-date">${dateStr}</div>
+            <div class="schedule-teams">${match.teams}</div>
+            <div class="schedule-venue">${match.venue}</div>
+            ${match.format ? `<div class="schedule-format">Format: ${match.format}</div>` : ''}
+            ${match.result ? `<div class="schedule-result ${resultClass}">${match.result}</div>` : ''}
+          </div>
+        `;
+      }).join('');
+      
+      document.getElementById('seriesSchedule').innerHTML = scheduleHTML;
+    } else {
+      document.getElementById('seriesSchedule').innerHTML = '<p>No matches scheduled yet.</p>';
+    }
+
+    // Render standings
+    if (series.standings && series.standings.length > 0) {
+      const standingsHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>Team</th>
+              <th>Played</th>
+              <th>Won</th>
+              <th>Lost</th>
+              ${series.format.includes('Test') ? '<th>Drawn</th>' : ''}
+              <th>Points</th>
+              ${series.format.includes('T20') || series.format.includes('ODI') ? '<th>NRR</th>' : ''}
+            </tr>
+          </thead>
+          <tbody>
+            ${series.standings.map(standing => `
+              <tr>
+                <td class="team-name-cell">
+                  <span>${standing.team}</span>
+                </td>
+                <td>${standing.played}</td>
+                <td>${standing.won}</td>
+                <td>${standing.lost}</td>
+                ${series.format.includes('Test') ? `<td>${standing.drawn || 0}</td>` : ''}
+                <td>${standing.points}</td>
+                ${series.format.includes('T20') || series.format.includes('ODI') ? `<td>${standing.nrr || 0}</td>` : ''}
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      `;
+      
+      document.getElementById('seriesStandings').innerHTML = standingsHTML;
+    } else if (series.groups && series.groups.length > 0) {
+      // For tournament with groups instead of standings
+      const groupsHTML = series.groups.map(group => `
+        <div class="group-section">
+          <h4>${group.name}</h4>
+          <ul>
+            ${group.teams.map(team => `<li>${team}</li>`).join('')}
+          </ul>
+        </div>
+      `).join('');
+      
+      document.getElementById('seriesStandings').innerHTML = groupsHTML;
+    } else {
+      document.getElementById('seriesStandings').innerHTML = '<p>No standings available yet.</p>';
+    }
+  }
+
+  seriesBackButton.addEventListener('click', () => {
+    seriesDetail.classList.add('hidden');
+    seriesList.style.display = 'grid';
+  });
+
+  // Initialize series cards
+  seriesData.forEach(series => {
+    seriesList.appendChild(createSeriesCard(series));
   });
 });

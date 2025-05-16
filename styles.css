@@ -10,6 +10,9 @@
   --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
   --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
   --transition-speed: 0.3s;
+  --format-test: #1e40af;
+  --format-odi: #047857;
+  --format-t20: #b91c1c;
 }
 
 * {
@@ -28,9 +31,43 @@ body {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0 2rem;
 }
 
+/* Navbar Styles */
+.navbar {
+  background-color: var(--card-background);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 2rem;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+}
+
+.nav-button {
+  padding: 1rem 1.5rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-speed);
+}
+
+.nav-button:hover {
+  color: var(--primary-color);
+}
+
+.nav-button.active {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+}
+
+/* Header Styles */
 .header {
   text-align: center;
   margin-bottom: 3rem;
@@ -55,12 +92,11 @@ body {
   border-radius: 2px;
 }
 
+/* Match Grid Styles */
 .match-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  opacity: 1;
-  transition: opacity var(--transition-speed);
 }
 
 .match-card {
@@ -117,16 +153,12 @@ body {
   color: #f57c00;
 }
 
-.match-detail {
+/* Match Detail Styles */
+.match-detail, .series-detail {
   background: var(--card-background);
   border-radius: 12px;
   padding: 2rem;
   box-shadow: var(--shadow-lg);
-  margin-top: 2rem;
-}
-
-.hidden {
-  display: none;
 }
 
 .back-button {
@@ -167,6 +199,7 @@ body {
   font-size: 1.1rem;
 }
 
+/* Player Stats Table */
 .player-stats table {
   width: 100%;
   border-collapse: collapse;
@@ -198,6 +231,350 @@ body {
   transition: width var(--transition-speed);
 }
 
+/* Series Grid Styles */
+.series-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.series-card {
+  background: var(--card-background);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-speed);
+  cursor: pointer;
+}
+
+.series-card:hover {
+  transform: translateY(-4px);
+}
+
+.series-header {
+  background: linear-gradient(to right, var(--primary-color), #2e7d32);
+  color: white;
+  padding: 1.5rem;
+}
+
+.series-content {
+  padding: 1.5rem;
+}
+
+.series-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.series-tag {
+  background-color: #f3f4f6;
+  color: var(--text-secondary);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+}
+
+/* Series Detail Styles */
+.series-detail-header {
+  margin-bottom: 1.5rem;
+}
+
+.series-detail-header h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.series-meta-info {
+  display: flex;
+  gap: 1.5rem;
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+.series-format-tag {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+.format-test {
+  background-color: var(--format-test);
+}
+
+.format-odi {
+  background-color: var(--format-odi);
+}
+
+.format-t20 {
+  background-color: var(--format-t20);
+}
+
+.series-details .detail-item,
+.series-teams .team-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.series-details .detail-item:last-child,
+.series-teams .team-item:last-child {
+  border-bottom: none;
+}
+
+.series-details .label,
+.series-teams .label {
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.series-details .value,
+.series-teams .value {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.series-schedule, .series-standings {
+  margin-top: 2rem;
+}
+
+.series-schedule h3, .series-standings h3 {
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.schedule-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.schedule-item {
+  background-color: #f8fafc;
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  transition: transform 0.2s;
+}
+
+.schedule-item:hover {
+  transform: translateY(-2px);
+}
+
+.schedule-date {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.schedule-teams {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.schedule-venue {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.schedule-result {
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+.standings-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.standings-table th,
+.standings-table td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.standings-table th {
+  font-weight: 600;
+  color: var(--text-secondary);
+  background-color: #f1f5f9;
+}
+
+.standings-table tr:last-child td {
+  border-bottom: none;
+}
+
+.team-logo {
+  width: 24px;
+  height: 24px;
+  margin-right: 0.5rem;
+  border-radius: 50%;
+}
+
+.team-name-cell {
+  display: flex;
+  align-items: center;
+}
+
+/* Auth Styles */
+.auth-container {
+  max-width: 480px;
+  margin: 0 auto;
+  background: var(--card-background);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.auth-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.auth-tab {
+  flex: 1;
+  padding: 1rem;
+  text-align: center;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-speed);
+}
+
+.auth-tab:hover {
+  color: var(--primary-color);
+}
+
+.auth-tab.active {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+}
+
+.auth-form {
+  padding: 2rem;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.form-header h2 {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.form-header p {
+  color: var(--text-secondary);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color var(--transition-speed);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(27, 94, 32, 0.1);
+}
+
+.form-group-inline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+.forgot-password {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color var(--transition-speed);
+}
+
+.btn-primary:hover {
+  background-color: #2e7d32;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Responsive Styles */
 @media (max-width: 768px) {
   .container {
     padding: 1rem;
@@ -209,5 +586,18 @@ body {
   
   .stats-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .schedule-list {
+    grid-template-columns: 1fr;
+  }
+
+  .series-meta-info {
+    flex-direction: column;
+    gap: 0.5rem;
   }
 }

@@ -1,66 +1,213 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cricket Dashboard with Enhanced Detail View</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div class="container">
-    <header class="header">
-      <h1>Cricket Match Dashboard</h1>
-      <p class="subtitle">Live scores, match details and player statistics</p>
-      <div class="header-line"></div>
-    </header>
-
-    <main>
-      <div id="matchList" class="match-grid">
-        <!-- Match cards will be inserted here -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cricket Match Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        <ul class="nav-list">
+          <li>
+            <button class="nav-button active" data-section="matches">Matches</button>
+          </li>
+          <li>
+            <button class="nav-button" data-section="series">Series</button>
+          </li>
+          <li>
+            <button class="nav-button" data-section="auth">Login / Register</button>
+          </li>
+        </ul>
       </div>
+    </nav>
 
-      <div id="matchDetail" class="match-detail hidden">
-        <button id="backButton" class="back-button">
-          ← Back to matches
-        </button>
-        
-        <div class="match-header">
-          <h2 id="matchTeams"></h2>
-          <div class="match-meta">
-            <span id="matchDate"></span>
-            <span id="matchVenue"></span>
-          </div>
+    <div class="container">
+      <header class="header">
+        <div class="header-content">
+          <h1>Cricket Match Dashboard</h1>
+          <p class="subtitle">Live scores, match details and player statistics</p>
+          <div class="header-line"></div>
         </div>
+      </header>
 
-        <div id="matchResult" class="match-result"></div>
+      <main>
+        <!-- Matches Section -->
+        <section id="matches" class="section">
+          <div id="matchList" class="match-grid"></div>
 
-        <div class="stats-grid">
-          <div class="stats-card top-performers">
-            <h3>Top Performers</h3>
-            <div id="topPerformers"></div>
-          </div>
-          
-          <div class="stats-card match-summary">
-            <h3>Match Summary</h3>
-            <div id="matchSummary"></div>
-          </div>
-        </div>
+          <div id="matchDetail" class="match-detail hidden">
+            <button id="backButton" class="back-button">
+              ← Back to matches
+            </button>
+            
+            <div class="match-header">
+              <h2 id="matchTeams"></h2>
+              <div class="match-meta">
+                <span id="matchDate"></span>
+                <span id="matchVenue"></span>
+              </div>
+            </div>
 
-        <div class="teams-section">
-          <div id="teamA" class="team-section">
-            <h3></h3>
-            <div class="player-stats"></div>
-          </div>
-          
-          <div id="teamB" class="team-section">
-            <h3></h3>
-            <div class="player-stats"></div>
-          </div>
-        </div>
-      </div>
-    </main>
-  </div>
+            <div id="matchResult" class="match-result"></div>
 
-  <script src="script.js"></script>
-</body>
+            <div class="stats-grid">
+              <div class="stats-card">
+                <h3>Top Performers</h3>
+                <div id="topPerformers"></div>
+              </div>
+              
+              <div class="stats-card">
+                <h3>Match Summary</h3>
+                <div id="matchSummary"></div>
+              </div>
+            </div>
+
+            <div class="teams-section">
+              <div id="teamA" class="team-section">
+                <h3></h3>
+                <div class="player-stats"></div>
+              </div>
+              
+              <div id="teamB" class="team-section">
+                <h3></h3>
+                <div class="player-stats"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Series Section -->
+        <section id="series" class="section hidden">
+          <div id="seriesList" class="series-grid"></div>
+
+          <div id="seriesDetail" class="series-detail hidden">
+            <button id="seriesBackButton" class="back-button">
+              ← Back to series
+            </button>
+            
+            <div class="series-detail-header">
+              <h2 id="seriesName"></h2>
+              <div class="series-meta-info">
+                <span id="seriesDateRange"></span>
+                <span id="seriesHost"></span>
+              </div>
+            </div>
+
+            <div class="series-format-tag" id="seriesFormat"></div>
+
+            <div class="stats-grid">
+              <div class="stats-card">
+                <h3>Series Details</h3>
+                <div id="seriesDetails" class="series-details"></div>
+              </div>
+              
+              <div class="stats-card">
+                <h3>Participating Teams</h3>
+                <div id="seriesTeams" class="series-teams"></div>
+              </div>
+            </div>
+
+            <div class="series-schedule">
+              <h3>Schedule & Results</h3>
+              <div id="seriesSchedule" class="schedule-list"></div>
+            </div>
+
+            <div class="series-standings">
+              <h3>Series Standings</h3>
+              <div id="seriesStandings" class="standings-table"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Auth Section -->
+        <section id="auth" class="section hidden">
+          <div class="auth-container">
+            <div class="auth-tabs">
+              <button class="auth-tab active" data-tab="login">Login</button>
+              <button class="auth-tab" data-tab="register">Register</button>
+            </div>
+
+            <div id="loginForm" class="auth-form">
+              <div class="form-header">
+                <h2>Welcome Back</h2>
+                <p>Sign in to access your account</p>
+              </div>
+              
+              <form>
+                <div class="form-group">
+                  <label for="loginEmail">Email</label>
+                  <input type="email" id="loginEmail" placeholder="your@email.com" required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="loginPassword">Password</label>
+                  <input type="password" id="loginPassword" placeholder="••••••••" required>
+                </div>
+                
+                <div class="form-group-inline">
+                  <label class="checkbox-label">
+                    <input type="checkbox" id="rememberMe">
+                    <span>Remember me</span>
+                  </label>
+                  <a href="#" class="forgot-password">Forgot password?</a>
+                </div>
+                
+                <button type="submit" class="btn-primary">Sign In</button>
+              </form>
+            </div>
+
+            <div id="registerForm" class="auth-form hidden">
+              <div class="form-header">
+                <h2>Create Account</h2>
+                <p>Join us to follow your favorite cricket teams</p>
+              </div>
+              
+              <form>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" placeholder="John" required>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" placeholder="Doe" required>
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label for="registerEmail">Email</label>
+                  <input type="email" id="registerEmail" placeholder="your@email.com" required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="registerPassword">Password</label>
+                  <input type="password" id="registerPassword" placeholder="••••••••" required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="confirmPassword">Confirm Password</label>
+                  <input type="password" id="confirmPassword" placeholder="••••••••" required>
+                </div>
+                
+                <div class="form-group">
+                  <label class="checkbox-label">
+                    <input type="checkbox" id="terms" required>
+                    <span>I agree to the <a href="#">Terms and Conditions</a></span>
+                  </label>
+                </div>
+                
+                <button type="submit" class="btn-primary">Create Account</button>
+              </form>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
